@@ -11,6 +11,7 @@
 <div>
     <h2>Новости <br> Только для зарегистрированных пользователей.</h2>
     <a href="/">Главная</a>
+    <a href="/todolist/state"> ToDoList</a>
     <a href="/login">Вход</a>
 </div>
 </body>
