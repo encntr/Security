@@ -1,15 +1,29 @@
 package example.security.repository;
 
-import java.util.List;
-import java.util.UUID;
-
-import example.security.entity.ToDoAction;
+import example.security.entity.ToDoItem;
+import example.security.entity.User;
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.stereotype.Repository;
 
-@Repository("TodoItemRepository")
-public interface ToDoRepository extends JpaRepository<ToDoAction, Long>
-{
-    ToDoAction findByItemId(Long itemId);
-    List<ToDoAction> findByListId(UUID listId);
+import java.util.Collection;
+import java.util.List;
+
+public interface ToDoRepository<T>{
+
+    void create(T var1);
+
+    void update(T var1);
+
+    T delete(int var1);
+
+    T findById(int var1);
+
+    Collection<T> list();
+
+    List<ToDoItem> findAll();
+
+    void save(ToDoItem toDoItem);
+
+    ToDoItem findByToDo(String todoName);
+
+    void deleteById(Integer id);
 }
