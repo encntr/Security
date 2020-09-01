@@ -6,26 +6,64 @@ import example.security.entity.User;
 import example.security.repository.ToDoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
-import javax.sql.RowSet;
-import java.time.LocalDate;
 
+import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 
-public class ToDoService {
+public class ToDoService implements ToDoRepository{
     @Autowired
     ToDoRepository toDoRepository;
 
     public List<ToDoItem> allToDoItems() {
         return toDoRepository.findAll();
     }
-
+    @Override
     public void create(ToDoItem toDoItem){
         toDoRepository.save(toDoItem);
     }
+
+    @Override
+    public void update(Object var1) {
+
+    }
+
+    @Override
+    public Object delete(int var1) {
+        return null;
+    }
+
+    @Override
+    public Object findById(int var1) {
+        return null;
+    }
+
+    @Override
+    public Collection list() {
+        return null;
+    }
+
+    @Override
+    public List<ToDoItem> findAll() {
+        return null;
+    }
+
+    @Override
+    public void save(ToDoItem toDoItem) {
+
+    }
+
+    @Override
+    public ToDoItem findByToDo(String todoName) {
+        return null;
+    }
+
+    @Override
+    public void deleteById(Integer id) {
+
+    }
+
     public boolean saveToDo(ToDoItem todoItem) {
         ToDoItem todoFromDB = toDoRepository.findByToDo(todoItem.getTodoName());
 

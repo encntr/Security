@@ -9,7 +9,7 @@ import java.util.List;
 
 public interface ToDoRepository<T>{
 
-    void create(T var1);
+    void create(ToDoItem toDoItem);
 
     void update(T var1);
 

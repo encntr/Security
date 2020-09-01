@@ -19,8 +19,8 @@
         <a href="/login">Войти</a>
         <a href="/registration">Зарегистрироваться</a></h4>
     </sec:authorize>
-    <sec:authorize access="isAuthenticated()">
-        <h4><a href="/logout">Выйти</a></h4>
+    <sec:authorize access="isAuthenticated()" >
+        <h4 align="right"><a href="/logout">Выйти</a></h4>
     </sec:authorize>
 
 </div>

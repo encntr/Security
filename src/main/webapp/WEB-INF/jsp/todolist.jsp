@@ -64,7 +64,7 @@
         <input name="status" type="checkbox" placeholder="Status"
                autofocus="true"/>
         <input type="hidden" name="toDoId" value="${toDoItem.id}"/>
-        <input type="hidden" name="action" value="add"/>
+        <input type="hidden" name="action" value="create"/>
         <button type="submit" align="center">Add</button>
     </div>
 
