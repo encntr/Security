@@ -1,86 +1,50 @@
 package example.security.service;
 
-import example.security.entity.Role;
 import example.security.entity.ToDoItem;
 import example.security.entity.User;
+import example.security.enums.Status;
 import example.security.repository.ToDoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 
 
+import java.time.LocalDate;
 import java.util.Collection;
-import java.util.Collections;
 import java.util.List;
-import java.util.Optional;
 
 public class ToDoService implements ToDoRepository{
-    @Autowired
-    ToDoRepository toDoRepository;
 
-    public List<ToDoItem> allToDoItems() {
-        return toDoRepository.findAll();
-    }
-    @Override
-    public void create(ToDoItem toDoItem){
-        toDoRepository.save(toDoItem);
-    }
+    ToDoRepository<Object> todoRepository;
+
+    public ToDoItem findTodoById(Long id) {
+        return todoRepository.findTodoById(id);    }
 
     @Override
-    public void update(Object var1) {
-
-    }
-
-    @Override
-    public Object delete(int var1) {
-        return null;
-    }
-
-    @Override
-    public Object findById(int var1) {
-        return null;
-    }
-
-    @Override
-    public Collection list() {
-        return null;
-    }
-
-    @Override
-    public List<ToDoItem> findAll() {
-        return null;
+    public void deleteById(Long id) {
+        todoRepository.deleteById(id);
     }
 
     @Override
     public void save(ToDoItem toDoItem) {
-
+        //toDoItem.setCreateDate(LocalDate.now());
+        //toDoItem.setAuthor(user);
+        todoRepository.save(toDoItem);
     }
 
-    @Override
-    public ToDoItem findByToDo(String todoName) {
-        return null;
+
+    public void addNewTodo(User user, ToDoItem todo){
+        todo.setAuthor(user);
+        todo.setCreateDate(LocalDate.now());
+        todo.setStatus(Status.NEW);
+        todoRepository.save(todo);
     }
 
-    @Override
-    public void deleteById(Integer id) {
-
+    public void deleteToDo(Long id){
+        todoRepository.deleteById(id);
     }
 
-    public boolean saveToDo(ToDoItem todoItem) {
-        ToDoItem todoFromDB = toDoRepository.findByToDo(todoItem.getTodoName());
-
-        if (todoFromDB != null) {
-            return false;
-        }
-
-        toDoRepository.save(todoItem);
-        return true;
+    public void saveToDo(User user, ToDoItem todo){
+        todo.setCreateDate(LocalDate.now());
+        todo.setAuthor(user);
+        todoRepository.save(todo);
     }
-
-   /* public boolean deleteToDo(Integer id) {
-        if (toDoRepository.findById(id).isPresent()) {
-            toDoRepository.deleteById(id);
-            return true;
-        }
-        return false;
-    }*/
-
 }

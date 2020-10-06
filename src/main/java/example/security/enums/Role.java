@@ -1,5 +1,6 @@
-package example.security.entity;
+package example.security.enums;
 
+import example.security.entity.User;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.Transient;
 
@@ -11,7 +12,7 @@ import java.util.Set;
 @Table(name = "t_role")
 public class Role implements GrantedAuthority {
     @Id
-    private Long id;
+    private Long role_id;
     private String name;
    // @Transient
     @ManyToMany(mappedBy = "roles")
@@ -20,20 +21,20 @@ public class Role implements GrantedAuthority {
     }
 
     public Role(Long id) {
-        this.id = id;
+        this.role_id = id;
     }
 
     public Role(Long id, String name) {
-        this.id = id;
+        this.role_id = id;
         this.name = name;
     }
 
     public Long getId() {
-        return id;
+        return role_id;
     }
 
     public void setId(Long id) {
-        this.id = id;
+        this.role_id = id;
     }
 
     public String getName() {

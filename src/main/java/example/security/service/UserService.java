@@ -1,6 +1,6 @@
 package example.security.service;
 
-import example.security.entity.Role;
+import example.security.enums.Role;
 import example.security.entity.User;
 import example.security.repository.RoleRepository;
 import example.security.repository.UserRepository;

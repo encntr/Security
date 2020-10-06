@@ -3,27 +3,22 @@ package example.security.repository;
 import example.security.entity.ToDoItem;
 import example.security.entity.User;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 
+import java.time.LocalDate;
 import java.util.Collection;
 import java.util.List;
 
 public interface ToDoRepository<T>{
 
-    void create(ToDoItem toDoItem);
+    public ToDoItem findTodoById(Long id);
 
-    void update(T var1);
+    public void deleteById(Long id);
 
-    T delete(int var1);
+    //@Query(value = "select t from ToDoItem t where t.status <> example.security.enums.Status.DONE and t.closingDate =:date ")
+    //List<ToDoItem> ListIsNotDoneTodo(@Param("date") LocalDate date);
 
-    T findById(int var1);
+    public void save( ToDoItem toDoItem);
 
-    Collection<T> list();
-
-    List<ToDoItem> findAll();
-
-    void save(ToDoItem toDoItem);
-
-    ToDoItem findByToDo(String todoName);
-
-    void deleteById(Integer id);
 }

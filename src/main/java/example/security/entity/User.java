@@ -1,7 +1,7 @@
 package example.security.entity;
 
+import example.security.enums.Role;
 import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.Transient;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
@@ -15,13 +15,15 @@ import java.util.Set;
 public class User implements UserDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Long user_id;
     @Size(min=2, message = "Не меньше 5 знаков")
     private String username;
     @Size(min=2, message = "Не меньше 5 знаков")
     private String password;
     //@Transient
     private String passwordConfirm;
+
+    //@CollectionTable(name = "t_user_roles", joinColumns = @JoinColumn(name = "users_id"))
 
     @ManyToMany(fetch = FetchType.EAGER)
     private Set<Role> roles;
@@ -30,11 +32,11 @@ public class User implements UserDetails {
     }
 
     public Long getId() {
-        return id;
+        return user_id;
     }
 
     public void setId(Long id) {
-        this.id = id;
+        this.user_id = id;
     }
 
     @Override
